@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="datacollect.js"></script>
+    <title>Datacollect inc</title>
+    
+</head>
+<body>
+  <div class="p-4">
+    <div class="progress" role="progressbar" aria-label="Animated striped example" >
+      <div id="progressBar" class=" progress-bar progress-bar-striped progress-bar-animated" style="width: 0;"></div>
+    </div>
+  </div>
+
+  <form class="bg-primary p-2 text-white bg-opacity-75 p-2" name="firstform" id="form1"> 
+      
+        <div id="step1" class="step">
+            <h1>Personal Information</h1>
+            <div class="mb-3">
+              <label for="Name" class="form-label">Name :</label>
+              <input type="text"  class="form-control " id="inputName" name="Name">
+              <span id="name-error" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+              <label for="age" class="form-label">Age :</label>
+              <input type="number" class="form-control" id="ageInput" name="age">
+              <span id="age-error" class="text-danger"></span>
+            </div>
+            <div class="d-flex justify-content-end p-4">
+                <button type="button" class="btn btn-primary" onclick="nextStep(event)">Next</button>
+            </div>
+        </div>
+        <div id="step2" class="step">
+            <h1>Professional Contact</h1>
+            <div class="mb-3">
+              <label for="Email" class="form-label">Email :</label>
+              <input type="email"  class="form-control" id="inputEmail" name = "email">
+              <span id="email-error" class="text-danger"></span>  
+            </div>
+            <div class="mb-3">
+              <label for="age" class="form-label"> phone number :</label>
+              <input type="number" class="form-control" id="inputPhone" name="phone">
+              <span id="phone-error" class="text-danger"></span>
+            </div>
+            <div class="d-flex justify-content-between p-4">
+                <button type="button" class="btn btn-primary" onclick="backStep(event)" >Back</button>
+                <button type="button" class="btn btn-primary" onclick="nextStep(event)" >Next</button>
+            </div>
+        </div>
+        <div id="step3" class="step">
+            <h1>Feedback</h1>
+            <div class="form-floating">
+                <textarea class="form-control" placeholder="Leave a comment here" id="feedback"></textarea>
+                <label for="floatingTextarea">Comments</label>
+                <span id="Feedback-error" class="text-danger"></span>
+            </div>
+            <div class="d-flex justify-content-between p-4">
+                <button type="button" class="btn btn-primary" onclick="backStep(event)">Back</button>
+                <button type="submit" class="btn btn-primary" onclick="nextStep(event)">submit</button>
+            </div>
+        </div>
+        
+  </form>
+    
+  <div class="container mt-5" style="display: none;" id="display">
+  <div class="card p-4">
+    <h3 class="card-title text-center">User Information</h3>
+    <form name="formDisplay">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control del" id="outputName" placeholder="Enter name" readonly >
+        <span id="name2-error" class="text-danger"></span>
+      </div>
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input type="number" class="form-control del "  id="outputAge" placeholder="Enter age" readonly>
+        <span id="age2-error" class="text-danger"></span>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control del"  id="outputEmail" placeholder="Enter email" readonly>
+        <span id="email2-error" class="text-danger"></span>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="tel" class="form-control del" id="outputPhone" placeholder="Enter phone number" readonly>
+        <span id="phone2-error" class="text-danger"></span>
+      </div>
+      <div class="form-group">
+        <label for="feedback">Feedback</label>
+        <textarea class="form-control del" id="outputFeedback" rows="3" placeholder="Enter feedback" readonly></textarea>
+        <span id="feedback2-error" class="text-danger"></span>
+      </div>
+      <div class="d-flex justify-content-between p-4">
+        <button type="button" class="btn btn-primary" onclick="modify()">Modify</button>
+        <button type="submit" class="btn btn-primary btn-block" onclick="Success(event)">Valide</button>
+    </div>
+    </form>
+  </div>
+  </div>
+  <div style="display: none;" id="success">
+        
+    <div class="container mt-5 "  >
+      <div class="alert alert-success" role="alert">
+          <h4 class="alert-heading">Submission Successful!</h4>
+          <p>Your information has been successfully submitted.</p>
+          <hr>
+          <p class="mb-0">
+            Thank you for providing your details. We'll review your feedback and get back to you shortly.
+            In the meantime, if you have any questions, feel free to reach out!
+          </p>
+      </div>
+      <button class="btn btn-primary" onclick="goback()">Go back from the beginning ➜</button>
+    </div>
+
+  </div>
+  
+
+</body>
+
+</html>
